@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h1>To-Do List<i class='bx bxs-edit-alt'></i></h1>
+
+            <div class="input-text">
+                <input type="text" class="input" placeholder="Add your text">
+                <button onclick="addTask()">Add</button>
+            </div>
+
+            <ul id="create_todo">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+            </ul>
+            <button class="btn">Delete All</button>
+        </div>
+    </div>
+
+
+    <script>
+        let input = document.querySelector('.input');
+        let btn = document.querySelector('.btn');
+        let todo = document.querySelector('#create_todo');
+
+
+        function addTask() {
+            if (input.value === '') {
+                alert("You must write something");
+            } else {
+                let li = document.createElement("li");
+                li.innerHTML = input.value;
+                todo.appendChild(li);
+
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+
+            }
+            input.value = '';
+            saveData()
+        }
+
+        todo.addEventListener('click', (e) => {
+            if (e.target.tagName === "LI") {
+                e.target.classList.toggle("checked");
+                saveData()
+            } else if (e.target.tagName === 'SPAN') {
+                e.target.parentElement.remove();
+                saveData()
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            todo.innerHTML = '';
+            saveData()
+        })
+
+        function saveData() {
+            localStorage.setItem("data", todo.innerHTML);
+        }
+        function showData() {
+            todo.innerHTML = localStorage.getItem("data")
+        }
+        showData()
+
+    </script>
+
+</body>
+
+</html>

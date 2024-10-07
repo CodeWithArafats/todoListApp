@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #222;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 40rem;
+    background-color: white;
+    padding: 2rem 2rem;
+    border-radius: .5rem;
+    margin-top: 4rem;
+
+    & .card {
+        display: flex;
+        flex-direction: column;
+
+        & .btn {
+            padding: 1rem 2rem;
+            background-color: crimson;
+            outline: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: .5rem;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        & h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            & i {
+                font-size: 2.5rem;
+                color: crimson;
+            }
+        }
+
+        & .input-text {
+            display: flex;
+            gap: 2rem;
+
+            & input {
+                flex: 1;
+                outline: none;
+                border: 2px solid black;
+                border-radius: .5rem;
+                padding: 0 1rem;
+                font-size: 1.8rem;
+                background-color: transparent;
+
+                &:focus {
+                    border: 2px solid crimson;
+                }
+            }
+
+            & button {
+                padding: 1rem 2rem;
+                background-color: crimson;
+                outline: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                border-radius: .5rem;
+                font-size: 1.8rem;
+            }
+        }
+
+        & ul li {
+            list-style: none;
+            font-size: 1.8rem;
+            padding: 1.2rem .8rem 1.2rem 4rem;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+
+            &::before {
+                content: '';
+                height: 2.8rem;
+                width: 2.8rem;
+                position: absolute;
+                background-image: url(./images/unchecked.png);
+                left: 0;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            &.checked {
+                color: #555;
+                text-decoration: line-through;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    height: 2.8rem;
+                    width: 2.8rem;
+                    position: absolute;
+                    background-image: url(./images/checked.png);
+                    left: 0;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            }
+
+            & span {
+                position: absolute;
+                right: 0;
+                top: 1rem;
+                width: 3rem;
+                height: 3rem;
+                font-size: 2.2rem;
+                color: #555;
+                line-height: 4rem;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                border-radius: 50%;
+
+                &:hover {
+                    background-color: #edeef0;
+                }
+            }
+        }
+    }
+}
+
+@media (width <=370px) {
+    html {
+        font-size: 55.25%;
+    }
+}
